@@ -105,7 +105,7 @@ class AdminController extends Controller
         $d = Order_product::where('id',$b->id)->delete();
 
 
-            array_push($datax,$c);
+            array_push($datax,$a);
         };
         return response()->json($datax);
 
@@ -117,11 +117,6 @@ class AdminController extends Controller
 
        return view('admin.order_product_succes')->with('products',$a);
     }
-    public function order_product_succes()
-    {
-        $a = Order_succes::all();
-        return response()->json($a);
-
-    }
+    
 
 }

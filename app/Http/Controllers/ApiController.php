@@ -7,6 +7,7 @@ use App\User;
 use App\Category;
 use App\Product;
 use App\Order_product;
+use App\Order_succes;
 class ApiController extends Controller
 {
     public function product()
@@ -31,5 +32,11 @@ class ApiController extends Controller
         
         return response()->json($a);
        
+    }
+    public function order_product_succes()
+    {
+        $a = Order_succes::all();
+        return response()->json($a);
+
     }
 }

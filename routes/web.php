@@ -28,9 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']],function(){
+Route::group(['prefix' => 'admin'],function(){
     Route::get('/account', 'AdminController@account');
-    Route::get('/', 'AdminController@index');
     Route::get('/category', 'AdminController@category');
     Route::get('/product', 'AdminController@product')->name('all-product');
     Route::get('/order_product_succes_view', 'AdminController@order_product_succes_view');
@@ -42,11 +41,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']],functi
 
 
 });
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']],function(){
+
+    Route::get('/', 'AdminController@index');
+
+
+});
+
 
 Route::group(['prefix' => 'api'],function(){
     Route::get('/product', 'ApiController@product');
     Route::get('/category', 'ApiController@category');
     Route::get('/order_product', 'ApiController@order_product');
+    Route::get('/order_product_succes', 'ApiController@order_product_succes');
 
 
 });
