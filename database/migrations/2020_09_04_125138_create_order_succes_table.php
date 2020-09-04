@@ -17,6 +17,8 @@ class CreateOrderSuccesTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
+            $table->integer('user_id');
+
             $table->string('img');
             $table->timestamps();
         });

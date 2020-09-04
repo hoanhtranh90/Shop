@@ -40,4 +40,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+    public function order_products()
+    {
+        return $this->hasMany('App\Order_product');
+    }
+    public function order_succes()
+    {
+        return $this->hasMany('App\Order_succes');
+    }
 }

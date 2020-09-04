@@ -18,6 +18,7 @@ class CreateOrderProductsTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('category_id');
+            $table->integer('user_id');
             $table->integer('count');
             $table->string('img');
             $table->text('Product_Description');

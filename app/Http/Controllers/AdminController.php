@@ -79,8 +79,9 @@ class AdminController extends Controller
         $order->Product_Description = $a[0]->Product_Description;
         $order->product_content = $a[0]->product_content;
         $order->category_id = $a[0]->category_id;
+        $order->user_id = $request->user_id;
         $order->save();        
-        return response()->json($order);
+        return response()->json($request->user_id);
     }
     public function delete_order_product(Request $request)
     {
@@ -97,6 +98,8 @@ class AdminController extends Controller
         $a = Order_product::where('id',$request->data[$i])->get();
         $b = $a[0];
         $c = Order_succes::create([
+            'user_id' => $b->user_id,
+
             'name' => $b->name,
             'price' => $b->price,
             'img' => $b->img,
@@ -105,7 +108,7 @@ class AdminController extends Controller
         $d = Order_product::where('id',$b->id)->delete();
 
 
-            array_push($datax,$a);
+            array_push($datax,$c);
         };
         return response()->json($datax);
 
