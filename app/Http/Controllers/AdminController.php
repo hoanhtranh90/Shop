@@ -69,6 +69,7 @@ class AdminController extends Controller
 
     }
     public function add_order_product(Request $request){
+        // save product
         $order = new Order_product;
         $a = Product::where('id',$request->id)->get();
 
@@ -85,6 +86,7 @@ class AdminController extends Controller
     }
     public function delete_order_product(Request $request)
     {
+        //delete gio hang
         $a = Order_product::where('id',$request->id)->delete();
         
         return response()->json($a);
@@ -92,6 +94,7 @@ class AdminController extends Controller
     }
     public function order_succes(Request $request)
     {
+        //don hang thanh cong
         $datax = [];
 
         for ($i=0; $i < count($request->data) ; $i++) { 
@@ -116,6 +119,7 @@ class AdminController extends Controller
     }
     public function order_product_succes_view()
     {
+        //xem don hang thanh cong
         $a = Order_succes::all();
 
        return view('admin.order_product_succes')->with('products',$a);

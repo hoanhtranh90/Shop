@@ -15,6 +15,8 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next,$roleName)
     {
+
+        //phan quyenn nguoi dung
         if(!Auth::check() || Auth::user()->role->name != $roleName){
             abort(404);
         }
