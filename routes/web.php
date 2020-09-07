@@ -29,27 +29,31 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'admin'],function(){
-    Route::get('/account', 'AdminController@account');
-    Route::get('/category', 'AdminController@category');
-    Route::get('/product', 'AdminController@product')->name('all-product');
-    Route::get('/order_product_succes_view', 'AdminController@order_product_succes_view');
-    Route::post('/add_product', 'AdminController@add_product');
-    Route::get('/add_product_form', 'AdminController@add_product_form');
+    //xu ly request gui len
     Route::post('/add_order_product', 'AdminController@add_order_product');
+    Route::post('/add_product', 'AdminController@add_product');
     Route::post('/delete_order_product', 'AdminController@delete_order_product');
     Route::post('/order_succes', 'AdminController@order_succes');
 
 
 });
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']],function(){
+    //trang quan tri
+    Route::get('/add_product_form', 'AdminController@add_product_form');
+   
+    Route::get('/account', 'AdminController@account');
+    Route::get('/category', 'AdminController@category');
+    Route::get('/product', 'AdminController@product')->name('all-product');
 
     Route::get('/', 'AdminController@index');
+    Route::get('/order_product_succes_view', 'AdminController@order_product_succes_view');
 
 
 });
 
 
 Route::group(['prefix' => 'api'],function(){
+    //du lieu tra ve
     Route::get('/product', 'ApiController@product');
     Route::get('/category', 'ApiController@category');
     Route::get('/order_product', 'ApiController@order_product');
